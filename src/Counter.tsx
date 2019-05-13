@@ -1,12 +1,14 @@
 import React, { PureComponent } from 'react';
 
-interface Props {}
+interface Props {
+  counter: number;
+}
 interface State {
   counter: number;
 }
 
 export default class Counter extends PureComponent<Props, State> {
-  static defaultProps: Props = {};
+  static defaultProps: Props = { counter: 0 };
   constructor(props: Props) {
     super(props);
     this.state = { counter: 0 };

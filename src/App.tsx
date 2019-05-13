@@ -5,15 +5,13 @@ import Counter from './Counter';
 import CounterHooks from './CounterHooks';
 import NumberFact from './NumberFact';
 import NumberFactHooks from './NumberFactHooks';
+import CounterForm from './CounterForm';
 
 const App: React.FC = () => {
   const num = Math.floor(Math.random() * 100);
   return (
     <div className="App">
-      Class
-      <Counter />
-      Hooks
-      <CounterHooks />
+      <CounterForm />
       <NumberFact number={num} />
       <NumberFactHooks number={num} />
     </div>

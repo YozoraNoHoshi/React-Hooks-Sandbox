@@ -1,8 +1,10 @@
-import React, { useState, Dispatch, SetStateAction } from 'react';
+import React, { useState, Dispatch, SetStateAction, memo } from 'react';
 
-interface Props {}
+interface Props {
+  counter: number;
+}
 
-export default function CounterHooks(props: Props) {
+export default memo(function CounterHooks(props: Props) {
   const [counter, setCounter]: [
     number,
     Dispatch<SetStateAction<number>>
@@ -18,4 +20,4 @@ export default function CounterHooks(props: Props) {
       <button onClick={handleClick}>Click me for hooks!</button>
     </div>
   );
-}
+});
