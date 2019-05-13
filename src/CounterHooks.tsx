@@ -2,7 +2,7 @@ import React, { useState, Dispatch, SetStateAction } from 'react';
 
 interface Props {}
 
-export function CounterHooks(props: Props) {
+export default function CounterHooks(props: Props) {
   const [counter, setCounter]: [
     number,
     Dispatch<SetStateAction<number>>
@@ -15,7 +15,7 @@ export function CounterHooks(props: Props) {
   return (
     <div>
       {counter}
-      <button onClick={handleClick} />
+      <button onClick={handleClick}>Click me for hooks!</button>
     </div>
   );
 }
