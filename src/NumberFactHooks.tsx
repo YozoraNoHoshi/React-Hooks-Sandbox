@@ -5,7 +5,7 @@ interface Props {
   number: number;
 }
 
-export default function NumberFactHooks(props: Props) {
+export default function NumberFactHooks(props: Props): JSX.Element {
   const [fact, setFact]: [string, Dispatch<SetStateAction<string>>] = useState(
     ''
   );
