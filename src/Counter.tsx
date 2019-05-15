@@ -11,7 +11,7 @@ export default class Counter extends PureComponent<Props, State> {
   static defaultProps: Props = { counter: 0 };
   constructor(props: Props) {
     super(props);
-    this.state = { counter: 0 };
+    this.state = { counter: props.counter };
   }
 
   handleClick = (evt: any) => {

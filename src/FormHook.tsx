@@ -1,7 +1,10 @@
-import { useState } from 'react';
+import { useState, Dispatch, SetStateAction } from 'react';
 
 export default function useInput(initialValue: any) {
-  const [value, setValue] = useState(initialValue);
+  const [value, setValue]: [
+    string,
+    Dispatch<SetStateAction<string>>
+  ] = useState(initialValue);
 
   return {
     value,

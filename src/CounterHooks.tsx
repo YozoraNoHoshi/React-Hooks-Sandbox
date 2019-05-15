@@ -8,7 +8,7 @@ export default memo(function CounterHooks(props: Props) {
   const [counter, setCounter]: [
     number,
     Dispatch<SetStateAction<number>>
-  ] = useState(0);
+  ] = useState(props.counter);
 
   function handleClick() {
     setCounter((c: number) => c + 1);

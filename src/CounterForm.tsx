@@ -10,7 +10,7 @@ export default function CounterForm(props: Props): JSX.Element {
   const [counter, setCounter] = useState(0);
   const handleSubmit = (evt: any) => {
     evt.preventDefault();
-    setCounter(value);
+    setCounter(+value);
   };
 
   return (
