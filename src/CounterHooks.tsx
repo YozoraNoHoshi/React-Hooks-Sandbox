@@ -4,7 +4,7 @@ interface Props {
   counter: number;
 }
 
-export default memo(function CounterHooks(props: Props) {
+function CounterHooks(props: Props): JSX.Element {
   const [counter, setCounter]: [
     number,
     Dispatch<SetStateAction<number>>
@@ -20,4 +20,8 @@ export default memo(function CounterHooks(props: Props) {
       <button onClick={handleClick}>Click me for hooks!</button>
     </div>
   );
-});
+}
+
+CounterHooks.defaultProps = { counter: 0 };
+
+export default memo(CounterHooks);
