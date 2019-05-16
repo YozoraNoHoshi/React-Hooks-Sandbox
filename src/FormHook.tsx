@@ -9,7 +9,7 @@ export default function useInput(initialValue: any) {
   return {
     value,
     setValue,
-    reset: () => setValue(initialValue),
+    // reset: () => setValue(initialValue),
     bind: {
       value,
       onChange: (event: any) => {
