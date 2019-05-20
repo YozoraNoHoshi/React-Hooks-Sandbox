@@ -7,9 +7,18 @@ import NumberFact from './NumberFact';
 import NumberFactHooks from './NumberFactHooks';
 import CounterForm from './CounterForm';
 import Timer from './Timer';
+import DynamicFormHook from './DynamicFormFields';
+
+const num = Math.floor(Math.random() * 100);
+function generateRandomFields(): any[] {
+  let val = new Array(Math.floor(Math.random() * 10));
+
+  return val.map((v, i) => {
+    return { name: `field${i}`, text: `Field ${i}` };
+  });
+}
 
 const App: React.FC = () => {
-  const [num] = useState(Math.floor(Math.random() * 100));
   const [activeTimer, setActiveTimer] = useState(false);
   return (
     <div className="App">
@@ -22,6 +31,7 @@ const App: React.FC = () => {
       <CounterHooks />
       <NumberFact number={num} />
       <NumberFactHooks number={num} />
+      <DynamicFormHook submit={() => {}} fields={generateRandomFields()} />
     </div>
   );
 };
