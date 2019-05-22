@@ -1,4 +1,10 @@
-import React, { useState, memo, Dispatch, SetStateAction } from 'react';
+import React, {
+  useState,
+  memo,
+  Dispatch,
+  SetStateAction,
+  useCallback
+} from 'react';
 
 interface Props {
   fields: Inputs[];
@@ -41,8 +47,14 @@ function DynamicFormHook(props: Props): JSX.Element {
     );
   };
 
+  // Memoizes the onChange callback so hypothetical input components do not re-render
+  const memoOnChange = useCallback((evt: any) => {
+    onChange(evt);
+  }, []);
+
   // Only supports text inputs, no dropdowns/selects at the moment.
   const renderInputs = (inputs: Inputs[]): JSX.Element[] => {
+    // Returns a hypothetical input component
     return inputs.map(i => (
       <>
         <label htmlFor={i.name}>{i.text}</label>
@@ -50,7 +62,7 @@ function DynamicFormHook(props: Props): JSX.Element {
           name={i.name}
           type={i.type || 'text'}
           value={form[name] || ''}
-          onChange={onChange}
+          onChange={memoOnChange}
         />
       </>
     ));
