@@ -26,7 +26,8 @@ function DynamicFormHook(props: Props): JSX.Element {
   // TO DO - Add a debounce of some sort to onChange.
   // Feels super inefficient to replace the state object -
   // but without a selective merge like Class component setState there isn't really a better way
-  const onChange = (evt: any): void => {
+  // Memoizes the onChange callback so hypothetical input components do not re-render
+  const onChange = useCallback((evt: any): void => {
     /*
     Modifies existing state (bad based on setState from Class Components, but constant time complexity)
     Will not trigger a re-render as React compares state by Object.is/Reference
@@ -45,12 +46,11 @@ function DynamicFormHook(props: Props): JSX.Element {
         return { ...frm, [evt.target.name]: evt.target.value };
       }
     );
-  };
-
-  // Memoizes the onChange callback so hypothetical input components do not re-render
-  const memoOnChange = useCallback((evt: any) => {
-    onChange(evt);
   }, []);
+
+  // const memoOnChange = useCallback((evt: any) => {
+  //   onChange(evt);
+  // }, []);
 
   // Only supports text inputs, no dropdowns/selects at the moment.
   const renderInputs = (inputs: Inputs[]): JSX.Element[] => {
@@ -62,7 +62,7 @@ function DynamicFormHook(props: Props): JSX.Element {
           name={i.name}
           type={i.type || 'text'}
           value={form[name] || ''}
-          onChange={memoOnChange}
+          onChange={onChange}
         />
       </>
     ));
